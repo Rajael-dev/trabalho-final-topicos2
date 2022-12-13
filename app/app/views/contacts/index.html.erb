@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contatos</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>DDD</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @contacts.empty? %>
+      <tr>
+        <td colspan="4" class="text-center">
+          <h3>Sem contatos cadastrados :(</h3>
+        </td>
+      </tr>
+    <% end %>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.phone %></td>
+        <td><%= contact.region.ddd %></td>
+        <td><%= link_to 'Mostrar', contact, class:"btn btn-info" %></td>
+        <td><%= link_to 'Editar', edit_contact_path(contact), class:"btn btn-primary" %></td>
+        <td><%= button_to 'Apagar', contact, method: :delete, data: { confirm: 'Tem certeza?' }, class:"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo', new_contact_path, class:"btn btn-primary" %>
