@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :contacts
   resources :regions
   resources :users, only: [:new, :create, :show, :edit, :update]
+
+  match '*unmatched', to: 'application#send_error_info', via: :all
 end

@@ -65,7 +65,13 @@ class RegionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_region
-      @region = current_user.regions.find(params[:id])
+      if current_user.is_admin == 1
+        @region = Region.all.find(params[:id])
+      else
+        @region = current_user.regions.find(params[:id])
+      end
+
+      self.send_error_info unless @region.present?
     end
 
     # Only allow a list of trusted parameters through.

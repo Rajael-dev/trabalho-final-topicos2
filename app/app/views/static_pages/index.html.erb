@@ -5,6 +5,6 @@
   </p>
   <p>
     <%= user_signed_in? ? (link_to 'Ver meus contatos!', contacts_path, class: 'btn btn-primary btn-lg') : (link_to 'Crie sua conta!', new_user_path, class: 'btn btn-primary btn-lg') %>
-    <%= user_signed_in? ? (link_to 'Ver minhas regiões!', regions_path, class: 'btn btn-primary btn-lg') : (link_to 'Crie sua conta!', new_user_path, class: 'btn btn-primary btn-lg') %>
+    <%= user_signed_in? ? (link_to 'Ver minhas regiões!', regions_path, class: 'btn btn-primary btn-lg') : '' %>
   </p>
 </div>

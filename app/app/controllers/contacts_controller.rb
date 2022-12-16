@@ -67,7 +67,13 @@ class ContactsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
-      @contact = current_user.contacts.find(params[:id])
+      if current_user.is_admin == 1
+        @contact = Contact.all.find(params[:id])
+      else
+        @contact = current_user.contacts.find(params[:id])
+      end
+
+      self.send_error_info unless @contact.present?
     end
 
     # Only allow a list of trusted parameters through.
@@ -76,6 +82,10 @@ class ContactsController < ApplicationController
     end
 
     def set_region_options
-      @region_options = current_user.regions.pluck(:ddd, :id)
+      if current_user.is_admin == 1
+        @region_options = Region.all.pluck(:ddd, :id)
+      else
+        @region_options = current_user.regions.pluck(:ddd, :id)
+      end
     end
 end
