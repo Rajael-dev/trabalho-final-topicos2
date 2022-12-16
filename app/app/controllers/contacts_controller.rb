@@ -10,7 +10,6 @@ class ContactsController < ApplicationController
     else
       @contacts = current_user.contacts
     end
-
   end
 
   # GET /contacts/1 or /contacts/1.json
