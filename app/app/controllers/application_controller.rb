@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def send_error_info
-    # erro_info = params.merge(client_ip: request.remote_ip,
-    #                          at: DateTime.now)
-    #
-    # ErrorInfoMailer.with(error_info: erro_info).catch_error.deliver_now!
+    erro_info = params.merge(client_ip: request.remote_ip,
+                             at: DateTime.now)
+
+    ErrorInfoMailer.with(error_info: erro_info).catch_error.deliver_now!
 
     redirect_to root_path
   end
