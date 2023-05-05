@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:1-bullseye
 RUN apt-get update -qq && apt-get install apache2-utils -y
 RUN apt-get update -qq && apt-get  install zip -y
 ENV RAILS_ROOT /var/www/app
