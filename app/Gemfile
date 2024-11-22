@@ -22,7 +22,7 @@ gem 'faker'
 
 gem 'tty-spinner'
 
-gem 'rails-i18n'
+gem 'rails-i18n', '>= 8.0.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
